@@ -1,0 +1,17 @@
+#!/bin/sh
+echo "Hello EOS"
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+runlevel=S
+prevlevel=N
+umask 022
+export PATH runlevel prevlevel 
+#mount -a
+cd /dev
+mknod null c 1 3
+mknod ttyFIQ0 c 204 64
+
+echo "start profile"
+. /etc/profile
+
+echo "END rcS"
